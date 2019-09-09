@@ -7,3 +7,4 @@
 - Seminário final: 11/11
 - Entrega 2: 22/11
 
+a
