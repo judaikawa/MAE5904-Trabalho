@@ -3,6 +3,7 @@ Professora: Florencia Leonardi
 Trabalho em grupo: entrega 1
 Grupo: 6
 Membros do grupo: Bruno Casaes Teixeira, Juliana Daikawa, Kévin Allan Sales Rodrigues, Vitoria de Oliveira Silva.
+\n
 **Proposta de trabalho**
 Criar um modelo preditivo e inferencial para a taxa ajustada de homicídios nos municípios brasileiros.
 **Descrição do Problema**
