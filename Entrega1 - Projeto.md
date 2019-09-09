@@ -18,44 +18,44 @@ Variáveis extraídas do Censo demográfico de 2010 pelo IBGE. E variável respo
 
 Dimensões da Base: 38 Variáveis por 5565 Observações
 
-Life_expectance: Expectativa de Vida
-Residents: Residentes
-Median_age: Mediana de Idade
-Elderly: Proporção de Idosos
-Dependency_ratio: Razão de Dependência
-Women: Proporção de Mulheres
-Per_capita_births: Nascimentos per capita
-Married: Proporção de Casados
-Evangelics: Proporção de Evangélicos
-Disability_rate: Índice de Deficiência
-Municipal_density: Densidade Municipal
-Urban_area: Proporção de Área urbana
-Fridge: Proporção de casas com geladeira
-Computer_ownership: Proporção de casas com computadores
-Automobile_ownership: Proporção de casas com automóveis
-Hosehold_density: Densidade de Casas
-Favela (slums) residents: Proporção de residentes em favelas
-Electricity: Proporção de casas com eletricidade
-Green_spaces: Proporção de áreas verdes
-Paved_street: Proporção de Ruas Pavimentadas
-Whites: Proporção de Brancos
-Illiteracy_rate: Proporção de Analfabetos
-College_education: Proporção de Universitários
-Highschool_completion: Proporção de Concluintes do Ensino Médio
-Migrants: Proporção de Migrantes
-Foreigners: Proporção de Estrangeiros
-Median_income: Renda Mediana
-Unemployment: Taxa de Desemprego
-Child_labor: Trabalho Infantil
-Retired_residents: Proporção de Aposentados
-Overworking: Índice de Horas Extras
-Poor_children: Proporção de Crianças Pobres
-Per_capita_GDP: Renda Per Capita
-Gini_coefficient: Coeficiente de Gini
-Bolsa_Familia_Coverage: Cobertura de Bolsa Família
-Communiting: Residentes trabalhando fora da cidade
-Priv_Insurance: Proporção de Residentes cobertos por planos de Saúde
-Homicides: Número de homicídios registrados
+Life_expectance: Expectativa de Vida <br/>
+Residents: Residentes <br/>
+Median_age: Mediana de Idade <br/>
+Elderly: Proporção de Idosos <br/>
+Dependency_ratio: Razão de Dependência <br/>
+Women: Proporção de Mulheres <br/>
+Per_capita_births: Nascimentos per capita <br/>
+Married: Proporção de Casados <br/>
+Evangelics: Proporção de Evangélicos <br/>
+Disability_rate: Índice de Deficiência <br/>
+Municipal_density: Densidade Municipal <br/>
+Urban_area: Proporção de Área urbana <br/>
+Fridge: Proporção de casas com geladeira <br/>
+Computer_ownership: Proporção de casas com computadores <br/>
+Automobile_ownership: Proporção de casas com automóveis <br/>
+Hosehold_density: Densidade de Casas <br/>
+Favela (slums) residents: Proporção de residentes em favelas <br/>
+Electricity: Proporção de casas com eletricidade <br/>
+Green_spaces: Proporção de áreas verdes <br/>
+Paved_street: Proporção de Ruas Pavimentadas <br/>
+Whites: Proporção de Brancos <br/>
+Illiteracy_rate: Proporção de Analfabetos <br/>
+College_education: Proporção de Universitários <br/>
+Highschool_completion: Proporção de Concluintes do Ensino Médio <br/>
+Migrants: Proporção de Migrantes <br/>
+Foreigners: Proporção de Estrangeiros <br/>
+Median_income: Renda Mediana <br/>
+Unemployment: Taxa de Desemprego <br/>
+Child_labor: Trabalho Infantil <br/>
+Retired_residents: Proporção de Aposentados <br/>
+Overworking: Índice de Horas Extras <br/>
+Poor_children: Proporção de Crianças Pobres <br/>
+Per_capita_GDP: Renda Per Capita <br/>
+Gini_coefficient: Coeficiente de Gini <br/>
+Bolsa_Familia_Coverage: Cobertura de Bolsa Família <br/>
+Communiting: Residentes trabalhando fora da cidade <br/>
+Priv_Insurance: Proporção de Residentes cobertos por planos de Saúde <br/>
+Homicides: Número de homicídios registrados <br/>
 
 
 **Avaliação do problema**
