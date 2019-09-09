@@ -3,12 +3,16 @@ Professora: Florencia Leonardi
 Trabalho em grupo: entrega 1
 Grupo: 6
 Membros do grupo: Bruno Casaes Teixeira, Juliana Daikawa, Kévin Allan Sales Rodrigues, Vitoria de Oliveira Silva.
-\n
+
 **Proposta de trabalho**
 Criar um modelo preditivo e inferencial para a taxa ajustada de homicídios nos municípios brasileiros.
+
+
 **Descrição do Problema**
 Não há um consenso sobre quais as principais variáveis que estão associadas a homicídios. Neste trabalho buscaremos utilizar variáveis socioeconômicas com o objetivo de prever as taxas de homicídios nos municípios do Brasil.
-*Descrição do conjunto de dados*
+
+
+**Descrição do conjunto de dados**
 
 Variáveis extraídas do Censo demográfico de 2010 pelo IBGE. E variável resposta obtida pelo agrupamento da base de dados de Mortalidade do Sistema de Informações de Mortalidade do Ministério da Saúde.
 
@@ -54,8 +58,8 @@ Priv_Insurance: Proporção de Residentes cobertos por planos de Saúde
 Homicides: Número de homicídios registrados
 
 
-*Avaliação do problema*
+**Avaliação do problema**
 Modelo supervisionado de Regressão
 
-*Comentários ou dúvidas*
+**Comentários ou dúvidas**
 O dado segue uma distribuição de Poisson, uma vez que deriva de uma contagem de eventos. Desta forma, esse modelo acrescenta um elemento adicional de complicação dado que a maior parte dos modelos pressupõem uma distribuição normal.
