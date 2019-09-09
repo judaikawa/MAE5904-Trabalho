@@ -1,8 +1,8 @@
-Disciplina: MAE5904 - Aprendizagem estatística em altas dimensões, 2019.2
-Professora: Florencia Leonardi
-Trabalho em grupo: entrega 1
-Grupo: 6
-Membros do grupo: Bruno Casaes Teixeira, Juliana Daikawa, Kévin Allan Sales Rodrigues, Vitoria de Oliveira Silva.
+Disciplina: MAE5904 - Aprendizagem estatística em altas dimensões, 2019.2 <br/>
+Professora: Florencia Leonardi <br/>
+Trabalho em grupo: entrega 1 <br/>
+Grupo: 6 <br/>
+Membros do grupo: Bruno Casaes Teixeira, Juliana Daikawa, Kévin Allan Sales Rodrigues, Vitoria de Oliveira Silva. <br/>
 
 **Proposta de trabalho**
 Criar um modelo preditivo e inferencial para a taxa ajustada de homicídios nos municípios brasileiros.
