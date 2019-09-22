@@ -1,0 +1,151 @@
+---
+title: "Trabalho MAE5904"
+output: html_notebook
+---
+
+Bibliotecas
+```{r,eval=FALSE}
+libs <- c("dplyr"
+          ,"ggplot2"
+          ,"tidyverse"
+          ,"maps"
+          ,"mapproj"
+          ,"rgdal"
+          ,"corrplot"
+          ,"visdat"
+          ,"rpart"
+          ,"rattle")
+#lapply(libs,install.packages,character.only = TRUE)
+lapply(libs,library,character.only = TRUE)
+```
+
+Dados
+```{r,eval=FALSE}
+dados_demograficos <- read.csv('TabelaCompleta.csv', sep=";")
+homicidios <- read.csv('HomicidiosTabnet.csv', sep=";")
+```
+
+Limpeza
+```{r,eval=FALSE}
+homicidios <- homicidios[1:5532,] # Removendo linhas finais 
+dados_demograficos <- dados_demograficos %>% select(-X) # Removendo a coluna X
+
+homicidios$Munic.pio <- as.character(homicidios$Munic.pio)
+homicidios$Municipality_code <- unlist(lapply(homicidios$Munic.pio,FUN = function(x) unlist(strsplit(x," "))[1]))
+homicidios$Municipality_code <- as.integer(homicidios$Municipality_code)
+
+dados_demograficos$Priv_Insurance <- as.numeric(as.character(dados_demograficos$Priv_Insurance))
+dados_demograficos$Obitos <- as.character(dados_demograficos$Obitos)
+dados_demograficos$Obitos <- as.numeric(gsub(",",".",dados_demograficos$Obitos))
+dados_demograficos$tx <- as.character(dados_demograficos$tx)
+dados_demograficos$tx <- as.numeric(gsub(",",".",dados_demograficos$tx))
+dados_demograficos$txadj <- as.character(dados_demograficos$txadj)
+dados_demograficos$txadj <- as.numeric(gsub(",",".",dados_demograficos$txadj))
+
+homicidios <- homicidios[,-1]
+homicidios <- homicidios %>% mutate_all(as.character)
+homicidios <- homicidios %>% mutate_all(as.numeric)
+```
+
+
+Join
+```{r,eval=FALSE}
+dados <- dados_demograficos %>% left_join(homicidios, by = "Municipality_code")
+dados <- dados[,-which(names(dados)=="Obitos")]
+rm(dados_demograficos, homicidios)
+```
+
+
+EDA
+
+Missing Values
+```{r}
+vis_miss(dados)
+```
+
+Correlação
+```{r}
+corrplot(cor(dados[,c(2:37,39:41)],use = "complete.obs"))
+```
+
+Correlação com variável resposta tx
+```{r}
+d <- c()
+d$Var <- names(cor(dados[,c(2:37,39:41)])[,"tx"])[-c(38:39)]
+d$Value <- as.numeric(cor(dados[,c(2:37,39:41)])[,"tx"])[-c(38:39)]
+d <- as.data.frame(d)
+
+var_tx <- names(sort(abs(cor(dados[,c(2:37,39:41)])[,"tx"])[-c(38:39)],decreasing = F))
+ggplot(d,aes(Var,abs(Value))) + geom_bar(stat = "identity") + coord_flip() + 
+  scale_x_discrete(limits = var_tx)
+```
+
+Density
+```{r}
+select_if(dados[,1:41], is.numeric) %>% 
+  gather() %>%  
+  ggplot(aes(value)) + 
+  facet_wrap(~ key, scales='free') + 
+  geom_density()
+```
+
+```{r}
+select_if(dados[,1:41], is.numeric) %>% 
+  gather() %>%  
+  ggplot(aes(y=value)) + 
+  facet_wrap(~ key, scales='free') + 
+  geom_boxplot()
+```
+
+Mapa
+```{r,eval=FALSE}
+# https://mapas.ibge.gov.br/bases-e-referenciais/bases-cartograficas/malhas-digitais
+BR <- readOGR("BRMUE250GC_SIR.shp")
+coords <- as.data.frame(coordinates(BR))
+coords$Cod <- BR$CD_GEOCMU
+coords$Cod <- unlist(lapply(coords$Cod, FUN = function(x) substr(x,1,6)))
+coords$Cod <- as.numeric(as.character(coords$Cod))
+
+dados <- dados %>% left_join(coords, by = c("Municipality_code"="Cod"))
+```
+
+```{r}
+tx_plot <- ggplot(dados, aes(V1, V2, color=tx)) +     
+  geom_point(aes(size=tx),alpha=0.7) + 
+  theme_void() + ggtitle("Taxa") +
+  scale_colour_gradient(low="#FFCC33", high="#6600CC")
+
+tx_plot
+```
+
+Whites
+
+```{r}
+whites_plot <- ggplot(dados, aes(V1, V2, color=Whites)) +     
+  geom_point() + 
+  theme_void() + ggtitle("Whites") +
+  scale_colour_gradient(low="#FFCC33", high="#6600CC")
+
+whites_plot
+```
+
+Taxa de Mortalidade por Estado
+```{r}
+estados <- dados %>% group_by(State_of_residence) %>% summarise(tx=median(tx), V1=median(V1), V2=median(V2))
+
+# Mediana
+pos <- as.character(estados$State_of_residence[order(estados$tx)])
+ggplot(estados,aes(State_of_residence,tx)) + geom_bar(stat = "identity") + coord_flip() + 
+  scale_x_discrete(limits = pos)
+```
+
+Árvore
+```{r}
+formula <- paste("tx ~",paste(var_tx, collapse = "+"))
+
+tree <- rpart(formula,dados)
+
+fancyRpartPlot(tree,cex=0.5)
+```
+
+
