@@ -77,13 +77,17 @@ taxas <- taxas %>% left_join(mortesna, by = c('CD_MUNIC'='CODMUNRES')) %>%
   mutate(Obitos = obitosTot, tx = obitosTot*100000/Pop) %>% 
   select(-obitosTot, -obitosNA, -PercNA)
 
+taxas$Obitos <- replace_na(taxas$Obitos,0)
+taxas$tx <- replace_na(taxas$tx,0)
+
 #carregadados de cidades
-set <- read_csv2("Data_set_socioeconomic_characteristics.csv") %>% 
+set <- read_delim("Data_set_socioeconomic_characteristics.csv", delim = ";") %>% 
   left_join(taxas, by = c("Municipality_code" = "CD_MUNIC"))
 set$X1 <- NULL
 
 set$Residents <- set$Pop
 set <- set %>% select(-ano, -Pop, -PopPad, -Obtadj)
+set$Priv_Insurance <- as.numeric(set$Priv_Insurance)
 
 save(SIMCFilt, taxas, set, file = "IntermMortDataPrep.RData")
 write.csv2(taxas, "Taxas.csv")
