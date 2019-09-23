@@ -1,6 +1,8 @@
 ---
 title: "Trabalho MAE5904"
-output: html_notebook
+output:
+  pdf_document: default
+  html_notebook: default
 ---
 
 Bibliotecas
@@ -65,7 +67,7 @@ vis_miss(dados)
 
 Correlação
 ```{r}
-corrplot(cor(dados[,c(2:37,39:41)],use = "complete.obs"))
+corrplot(cor(dados[,c(2:37,39:41)],use = "complete.obs"),tl.cex=0.5)
 ```
 
 Correlação com variável resposta tx
